@@ -206,15 +206,50 @@ body {
   transform: scale(0.95);
 }
 
+/* Weapon Image */
+.weapon-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.weapon-card:hover .weapon-image {
+  transform: scale(1.1);
+}
+
+/* Fallback number display (when image fails to load) */
 .weapon-number {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--text-primary);
+  display: none;
+}
+
+.weapon-card.image-failed .weapon-number {
+  display: block;
+}
+
+.weapon-card.image-failed .weapon-image {
+  display: none;
 }
 
 .kuma-card .weapon-number {
   font-size: 1.2rem;
   color: var(--accent-yellow);
+}
+
+/* Placeholder for missing images */
+.weapon-placeholder {
+  width: 60%;
+  height: 60%;
+  background: var(--bg-card);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
 }
 
 /* Usage Badge */

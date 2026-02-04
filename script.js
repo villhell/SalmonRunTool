@@ -128,12 +128,35 @@ function renderKumaWeapons() {
   });
 }
 
+// Generate weapon image path
+function getWeaponImagePath(weapon, isKuma) {
+  if (isKuma) {
+    return `images/kuma/kuma_${weapon.number.toString().padStart(2, '0')}.png`;
+  }
+  return `images/weapons/weapon_${weapon.number.toString().padStart(3, '0')}.png`;
+}
+
 function createWeaponCard(weapon, isKuma) {
   const card = document.createElement('div');
   card.className = 'weapon-card' + (isKuma ? ' kuma-card' : '');
   card.dataset.id = weapon.id;
   card.dataset.name = weapon.name;
 
+  // Weapon image
+  const img = document.createElement('img');
+  img.src = getWeaponImagePath(weapon, isKuma);
+  img.alt = weapon.name;
+  img.className = 'weapon-image';
+  img.loading = 'lazy'; // Lazy loading for performance
+
+  // Handle image load error - show fallback number
+  img.onerror = function() {
+    card.classList.add('image-failed');
+  };
+
+  card.appendChild(img);
+
+  // Fallback number display (hidden by default, shown when image fails)
   const numberSpan = document.createElement('span');
   numberSpan.className = 'weapon-number';
   if (isKuma) {
