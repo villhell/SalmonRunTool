@@ -1,0 +1,480 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #1a1a2e;
+  --bg-card: #2a2a3e;
+  --bg-card-hover: #3a3a4e;
+  --accent-yellow: #f7b500;
+  --accent-orange: #ff6b00;
+  --accent-green: #4caf50;
+  --accent-red: #f44336;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --badge-bg: #ff6b00;
+  --border-color: #3a3a4e;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-bottom: 2px solid var(--accent-orange);
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  color: var(--accent-yellow);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Mode Switch Buttons */
+.mode-switch {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mode-btn {
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #4a4a5e;
+  color: var(--text-secondary);
+}
+
+.mode-btn:hover {
+  transform: scale(1.05);
+}
+
+.mode-btn.active {
+  color: white;
+  box-shadow: 0 0 10px currentColor;
+}
+
+#plusMode.active {
+  background: var(--accent-green);
+}
+
+#minusMode.active {
+  background: var(--accent-red);
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.stat-item {
+  background: var(--bg-card);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.boss-stat {
+  background: linear-gradient(135deg, var(--bg-card), #3a2a4e);
+  border: 1px solid var(--accent-orange);
+}
+
+/* Clear Button */
+.clear-btn {
+  background: var(--accent-red);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #d32f2f;
+  transform: scale(1.05);
+}
+
+/* Instructions */
+.instructions {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Weapon Section */
+.weapon-section {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.weapon-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.5rem;
+}
+
+/* Kuma Section */
+.kuma-section {
+  background: linear-gradient(135deg, var(--bg-card), #3a3a2e);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 2px solid var(--accent-yellow);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.25rem;
+  color: var(--accent-yellow);
+  margin-bottom: 1rem;
+}
+
+.kuma-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.5rem;
+}
+
+/* Weapon Card */
+.weapon-card {
+  position: relative;
+  aspect-ratio: 1;
+  background: var(--bg-dark);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.weapon-card:hover {
+  background: var(--bg-card-hover);
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.weapon-card:active {
+  transform: scale(0.95);
+}
+
+.weapon-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.kuma-card .weapon-number {
+  font-size: 1.2rem;
+  color: var(--accent-yellow);
+}
+
+/* Usage Badge */
+.usage-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--badge-bg);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  animation: badgePop 0.2s ease;
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Tooltip */
+.weapon-card::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.weapon-card:hover::after {
+  opacity: 1;
+}
+
+/* Boss Section */
+.boss-section {
+  background: linear-gradient(135deg, var(--bg-card), #2e3a3a);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 2px solid var(--accent-orange);
+}
+
+.boss-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Boss Card */
+.boss-card {
+  background: var(--bg-dark);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.boss-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--accent-yellow);
+  margin-bottom: 1rem;
+}
+
+.boss-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: var(--bg-card);
+  border-radius: 8px;
+}
+
+.counter-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.counter-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.counter-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.counter-btn.plus {
+  background: var(--accent-green);
+  color: white;
+}
+
+.counter-btn.minus {
+  background: var(--accent-red);
+  color: white;
+}
+
+.counter-btn:hover {
+  transform: scale(1.1);
+}
+
+.counter-btn:active {
+  transform: scale(0.9);
+}
+
+.counter-value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  min-width: 40px;
+  text-align: center;
+}
+
+.boss-rate {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent-orange);
+  margin: 0.75rem 0;
+}
+
+.boss-reset {
+  background: #4a4a5e;
+  color: var(--text-secondary);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.boss-reset:hover {
+  background: var(--accent-red);
+  color: white;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.footer p {
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .weapon-grid,
+  .kuma-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.35rem;
+  }
+
+  .weapon-number {
+    font-size: 1.1rem;
+  }
+
+  .kuma-card .weapon-number {
+    font-size: 0.9rem;
+  }
+
+  .usage-badge {
+    font-size: 0.65rem;
+    min-width: 16px;
+    height: 16px;
+    top: 2px;
+    right: 2px;
+  }
+
+  .boss-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .boss-card {
+    padding: 0.75rem;
+  }
+
+  .boss-name {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .stats {
+    font-size: 0.8rem;
+  }
+
+  .stat-item {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .instructions {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .weapon-grid,
+  .kuma-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.25rem;
+  }
+
+  .weapon-number {
+    font-size: 0.9rem;
+  }
+
+  .kuma-card .weapon-number {
+    font-size: 0.8rem;
+  }
+
+  .mode-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+}

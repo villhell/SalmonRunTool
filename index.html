@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サーモンランNW 武器チェッカー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">サーモンランNW 武器チェッカー</h1>
+
+      <div class="controls">
+        <div class="mode-switch">
+          <button id="plusMode" class="mode-btn active" title="クリックで+1">+</button>
+          <button id="minusMode" class="mode-btn" title="クリックで-1">-</button>
+        </div>
+
+        <div class="stats">
+          <span id="usedWeapons" class="stat-item">0 / 71 武器使用</span>
+          <span id="totalCount" class="stat-item">合計 0 回</span>
+          <span id="achievement" class="stat-item">0%</span>
+          <span id="bossStats" class="stat-item boss-stat">オカシラ討伐率: --% (0/0)</span>
+        </div>
+
+        <button id="clearAll" class="clear-btn">全クリア</button>
+      </div>
+
+      <p class="instructions">武器をクリックでカウント | 右クリック（長押し）で個別クリア</p>
+    </header>
+
+    <main class="main-content">
+      <section class="weapon-section">
+        <div id="weaponGrid" class="weapon-grid"></div>
+      </section>
+
+      <section class="kuma-section">
+        <h2 class="section-title">クマ武器コンプリートチャレンジ</h2>
+        <div id="kumaGrid" class="kuma-grid"></div>
+      </section>
+
+      <section class="boss-section">
+        <h2 class="section-title">オカシラ連合記録</h2>
+        <div id="bossGrid" class="boss-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>このツールは非公式のファンメイドツールです。</p>
+      <p>&copy; Splatoon 3 は任天堂の登録商標です。</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
